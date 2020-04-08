@@ -10,7 +10,8 @@ const entries = {
     'index': path.join(SRC, 'index.ts')
 };
 const copyPaths = [
-    'main-copy.js'
+    'main-copy.js',
+    'package.json' // APPLICATION package.json
 ]; //
 const plugins = [];
 

@@ -2,18 +2,35 @@
   "name": "sample-ts",
   "version": "0.0.1",
   "description": "Sample TypeScript Project",
-  "main": "",
+  "main": "dist/index.js",
   "scripts": {
     "start": "run-p _wait _server",
-    "build": "webpack --mode production",
+    "pack": "webpack --mode production && electron-builder --dir",
+    "build": "webpack --mode production && electron-builder",
     "_server": "webpack && webpack-dev-server",
     "_hotstart": "webpack && webpack-dev-server",
     "_electron": "electron ./dist/index.js",
     "_wait": "wait-on http-get://localhost:9000/ && npm run _electron"
   },
+  "build": {
+    "appId": "com.app.my",
+    "copyright": "Copyright © 2020 Kvisaz",
+    "directories": {
+      "app": "dist",
+      "output": "build"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "dir"
+        }
+      ]
+    }
+  },
   "devDependencies": {
     "copy-webpack-plugin": "^4.5.2",
     "electron": "^8.2.1",
+    "electron-builder": "^22.4.1",
     "html-webpack-plugin": "^4.0.0-alpha",
     "npm-run-all": "^4.1.5",
     "ts-loader": "^5.3.2",

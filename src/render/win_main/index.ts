@@ -6,3 +6,5 @@ console.log(`Версия ${version}`);
 console.log(`Hello Again. Im fixed`);
 
 console.log('I made Electron hot reload AGAIN!');
+
+document.body.innerHTML = '<h1>Hello!</h1>';

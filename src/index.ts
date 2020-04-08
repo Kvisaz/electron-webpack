@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const url = require('url');
 const {BrowserWindow, app} = require('electron');
 const isDev = require('electron-is-dev');
 const ProjectConstants = require('../ProjectConstants.js');
@@ -23,20 +24,21 @@ function createWindow() {
         }
     })
 
-    loadWin(win, 'render/win_main/index.html');
+    const relPath = 'render/win_main/index.html';
+
+    win.loadURL(getWinUrl(relPath));
 }
 
-function getWinPath(relativePath: string) {
-    if (!isDev) return path.join(app.getAppPath(), relativePath);
-    else return `http://localhost:${ProjectConstants.devPort}/${relativePath}`;
-}
+function getWinUrl(relPath: string) {
+    const startUrl = isDev
+        ? `http://localhost:${ProjectConstants.devPort}/${relPath}`
+        : url.format({
+            pathname: path.join(app.getAppPath(), relPath),
+            protocol: 'file:',
+            slashes: true
+        })
 
-function loadWin(browserWindow, relativePath: string) {
-    if (!isDev) {
-        browserWindow.loadFile(path.join(app.getAppPath(), relativePath));
-    } else {
-        browserWindow.loadURL(`http://localhost:${ProjectConstants.devPort}/${relativePath}`)
-    }
+    return startUrl;
 }
 
 
