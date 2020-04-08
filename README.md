@@ -1,4 +1,10 @@
-# Записки
+# Electron Webpack Template
+
+Good starter pack for Electron/Webpack/TypeScript development. 
+
+Multiple windows, multiple entries. No `electron-webpack`.
+
+`electron-builder` used
 
 
 ## Electron-builder
