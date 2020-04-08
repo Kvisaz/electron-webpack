@@ -1,23 +1,18 @@
 const path = require("path");
-const CopyPlugin = require("copy-webpack-plugin");
+const ConfigUtils = require('./webpack.config.utils');
 
 const SRC = path.join(__dirname, "src");
 const DIST = path.join(__dirname, "dist");
 const DIR_NODE = path.join(__dirname, "node_modules");
 
 const entries = {};
-const copyPath = [
+const copyPaths = [
     'main-copy.js'
 ]; //
 const plugins = [];
 
 // build copy
-if (copyPath && copyPath.length > 0) {
-    plugins.push(new CopyPlugin(copyPath.map(cPath =>
-        ({from: path.join(SRC, cPath), to: path.join(DIST, cPath)})
-    )))
-}
-
+plugins.push(ConfigUtils.copyPlugin(copyPaths, SRC, DIST))
 
 module.exports = (env, argv) => {
     return {
