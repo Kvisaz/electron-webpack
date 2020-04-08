@@ -1,8 +1,7 @@
 dist
 .idea/
 node_modules/
-yarn.lock
-package-lock.json
+build
 
 ### macOS template
 # General
