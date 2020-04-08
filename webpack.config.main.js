@@ -1,5 +1,6 @@
 const path = require("path");
 const ConfigUtils = require('./webpack.config.utils');
+const PROJECT_CONSTANTS = require('./ProjectConstants');
 
 const SRC = path.join(__dirname, "src");
 const DIST = path.join(__dirname, "dist");
@@ -25,6 +26,11 @@ module.exports = (env, argv) => {
         output: {
             path: DIST,
             filename: `[name].js`
+        },
+        devServer: {
+            contentBase: path.join(__dirname, 'dist'),
+            port: PROJECT_CONSTANTS.devPort,
+            disableHostCheck: true
         },
         resolve: {
             extensions: ['.ts', '.js'],

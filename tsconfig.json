@@ -4,7 +4,9 @@
     "target": "es2015",
     "module": "commonjs",
     "declaration": false,
-    "sourceMap": false
+    "sourceMap": false,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "include": [
     "src/**/*.ts"

@@ -1,7 +1,6 @@
 const path = require("path");
 const ConfigUtils = require('./webpack.config.utils');
-const CopyPlugin = require("copy-webpack-plugin");
-const HtmlPlugin = require("html-webpack-plugin");
+const PROJECT_CONSTANTS = require('./ProjectConstants');
 
 const SRC = path.join(__dirname, 'src', 'render');
 const DIST = path.join(__dirname, 'dist', 'render');
@@ -44,11 +43,6 @@ windows.forEach(win => {
 
 // build copies
 plugins.push(ConfigUtils.copyPlugin(copyPath, SRC, DIST))
-
-// define inline constants
-plugins.push(ConfigUtils.definePlugin({
-    VERSION: ConfigUtils.getVersion
-}))
 
 // build entries
 const entries = {};

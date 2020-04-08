@@ -4,21 +4,28 @@
   "description": "Sample TypeScript Project",
   "main": "",
   "scripts": {
-    "start": "webpack && webpack-dev-server",
+    "start": "run-p _wait _server",
     "build": "webpack --mode production",
-    "server": "webpack-dev-server"
+    "_server": "webpack && webpack-dev-server",
+    "_hotstart": "webpack && webpack-dev-server",
+    "_electron": "electron ./dist/index.js",
+    "_wait": "wait-on http-get://localhost:9000/ && npm run _electron"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^4.5.2",
     "electron": "^8.2.1",
     "html-webpack-plugin": "^4.0.0-alpha",
+    "npm-run-all": "^4.1.5",
     "ts-loader": "^5.3.2",
     "typescript": "^3.2.2",
+    "wait-on": "^4.0.1",
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.0",
     "webpack-concat-plugin": "^3.0.0",
     "webpack-dev-server": "^3.1.5",
     "webpack-watch-files-plugin": "^1.0.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "electron-is-dev": "^1.2.0"
+  }
 }

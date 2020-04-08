@@ -1,2 +1,8 @@
 // @ts-ignore
-console.log(`Версия ${VERSION}`); // build.json
+let {version} = require('../../../ProjectConstants.js');
+
+// @ts-ignore
+console.log(`Версия ${version}`);
+console.log(`Hello Again. Im fixed`);
+
+console.log('I made Electron hot reload AGAIN!');
