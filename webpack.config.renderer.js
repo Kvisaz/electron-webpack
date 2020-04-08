@@ -11,18 +11,18 @@ const windows = [
     {
         dir: "win_main",  // путь к папкам проекта в src и distr
         entry: "index.ts",
-        htmlTemplate: "index.html",
-        htmlDistrIndex: "index.html", // название html в папке дистрибутива
         copy: [
-            "assets",
+            "index.html",
+            "assets"
         ]
     },
     {
         dir: "win_test",  // путь к папкам проекта в src и distr
         entry: "index.ts",
-        htmlTemplate: "index.html",
-        htmlDistrIndex: "index.html", // название html в папке дистрибутива
+        //  htmlTemplate: "index.html",
+        //   htmlDistrIndex: "index.html", // название html в папке дистрибутива
         copy: [
+            //"index.html",
             //"assets",
         ]
     }
@@ -45,11 +45,17 @@ windows.forEach(win => {
 // build copies
 plugins.push(ConfigUtils.copyPlugin(copyPath, SRC, DIST))
 
+// define inline constants
+plugins.push(ConfigUtils.definePlugin({
+    VERSION: ConfigUtils.getVersion
+}))
+
 // build entries
 const entries = {};
 windows.forEach(win => {
     entries[win.dir] = path.join(win.dir, win.entry);
 })
+
 
 module.exports = (env, argv) => {
     return {
