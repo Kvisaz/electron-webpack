@@ -1,5 +1,4 @@
 const path = require("path");
-const ConfigUtils = require('./webpack.config.utils');
 const PACKAGE = require("./package.json");
 
 
@@ -8,22 +7,15 @@ const DIST = path.join(__dirname, "dist");
 const DIR_NODE = path.join(__dirname, "node_modules");
 
 const entries = {
-    'index': path.join(SRC, 'index.ts'),
+    'preload': path.join(SRC, 'preload.ts'),
 };
-const copyPaths = [
-    'package.json' // APPLICATION package.json
-]; //
-const plugins = [];
-
-// build copy
-plugins.push(ConfigUtils.copyPlugin(copyPaths, SRC, DIST))
 
 module.exports = (env, argv) => {
     return {
         context: SRC,
         entry: entries,
         mode: argv.mode || "development",
-        target: "electron-main",
+        target: "electron-renderer",
         output: {
             path: DIST,
             filename: `[name].js`
@@ -44,9 +36,6 @@ module.exports = (env, argv) => {
             rules: [
                 {test: /\.tsx?$/, loader: "ts-loader"},
             ],
-        },
-
-        plugins: plugins,
-        // watch: false,
+        }
     };
 };

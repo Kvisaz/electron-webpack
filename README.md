@@ -1,11 +1,15 @@
-# Electron Webpack Template
+# Записки
 
-Good starter pack for Electron/Webpack/TypeScript development. 
+## Preload
 
-Multiple windows, multiple entries. No `electron-webpack`.
+В текущей конфигурации, если отключить nodeIntegration, то надо ставить в webpack - targets 
+- preload.js как 'electron-renderer'
+- окна как 'web'
+- main как 'electron-main'
 
-`electron-builder` used
+Только так preload будет иметь доступ и к ноде, и к окну, а клиентские скрипты не будут вываливаться с криком "require is not defined".
 
+Но все это можно упростить если отказаться от preload.js и позволить в окнах интеграцию с нодой (тогда им надо поставить target='electron-renderer')
 
 ## Electron-builder
 

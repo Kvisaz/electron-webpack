@@ -3,9 +3,10 @@
   "version": "0.0.1",
   "description": "Sample TypeScript Project",
   "main": "dist/index.js",
+  "devPort": "9000",
   "scripts": {
     "start": "run-p _wait _server",
-    "pack": "webpack --mode production && electron-builder --dir",
+    "make": "webpack --mode production && electron-builder --dir",
     "build": "webpack --mode production && electron-builder",
     "_server": "webpack && webpack-dev-server",
     "_hotstart": "webpack && webpack-dev-server",

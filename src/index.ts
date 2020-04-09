@@ -1,13 +1,11 @@
+const PACKAGE = require('../package.json');
 const fs = require('fs');
 const path = require('path');
 const url = require('url');
 const {BrowserWindow, app} = require('electron');
 const isDev = require('electron-is-dev');
-const ProjectConstants = require('../ProjectConstants.js');
 
 console.log('Hello from main')
-const isExist = fs.existsSync(__filename);
-
 
 app.whenReady().then(createWindow)
 
@@ -20,7 +18,8 @@ function createWindow() {
         width: 800,
         height: 600,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: false,
+            preload: path.join(app.getAppPath(), 'preload.js')
         }
     })
 
@@ -31,7 +30,7 @@ function createWindow() {
 
 function getWinUrl(relPath: string) {
     const startUrl = isDev
-        ? `http://localhost:${ProjectConstants.devPort}/${relPath}`
+        ? `http://localhost:${PACKAGE.devPort}/${relPath}`
         : url.format({
             pathname: path.join(app.getAppPath(), relPath),
             protocol: 'file:',

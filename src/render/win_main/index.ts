@@ -1,10 +1,10 @@
-// @ts-ignore
-let {version} = require('../../../ProjectConstants.js');
+import {appPath} from './test';
+import {WindowGlobal} from '../../WindowGlobal';
 
-// @ts-ignore
-console.log(`Версия ${version}`);
-console.log(`Hello Again. Im fixed`);
+console.log(`Hello Again. Im live`);
 
-console.log('I made Electron hot reload AGAIN!');
-
-document.body.innerHTML = '<h1>Hello!</h1>';
+document.body.innerHTML = `
+<h1>Hello</h1>
+<p>app path: ${WindowGlobal.appPath}</p>
+<p>${appPath}</p>
+`;

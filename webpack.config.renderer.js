@@ -1,6 +1,5 @@
 const path = require("path");
 const ConfigUtils = require('./webpack.config.utils');
-const PROJECT_CONSTANTS = require('./ProjectConstants');
 
 const SRC = path.join(__dirname, 'src', 'render');
 const DIST = path.join(__dirname, 'dist', 'render');
@@ -56,7 +55,7 @@ module.exports = (env, argv) => {
         context: SRC,
         entry: entries,
         mode: argv.mode || "development",
-        target: "electron-renderer",
+        target: "web",
         output: {
             path: DIST,
             filename: path.join('[name]', 'index.js')
