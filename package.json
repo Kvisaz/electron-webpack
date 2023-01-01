@@ -29,16 +29,16 @@
     }
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^4.5.2",
+    "copy-webpack-plugin": "^11.0.0",
     "electron": "^8.2.1",
     "electron-builder": "^22.4.1",
-    "html-webpack-plugin": "^4.0.0-alpha",
+    "html-webpack-plugin": "^5.5.0",
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^5.3.2",
+    "ts-loader": "^9.4.2",
     "typescript": "^3.2.2",
     "wait-on": "^4.0.1",
-    "webpack": "^4.28.2",
-    "webpack-cli": "^3.1.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
     "webpack-concat-plugin": "^3.0.0",
     "webpack-dev-server": "^3.1.5",
     "webpack-watch-files-plugin": "^1.0.2"
